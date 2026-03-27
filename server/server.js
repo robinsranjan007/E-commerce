@@ -3,6 +3,12 @@ import dotenv from "dotenv"
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import mongoDB from './config/db.js'
+import authRoutes from './routes/authRoutes.js'
+import productRoutes from './routes/productRoutes.js'
+import categoryRoutes from './routes/categoryRoutes.js'
+import cartRoutes from './routes/cartRoutes.js'
+import orderRoutes from './routes/orderRoutes.js'
+import reviewRoutes from './routes/reviewRoutes.js'
 dotenv.config()
 
 
@@ -25,7 +31,13 @@ app.use(cors({
 
 
 
-
+//routes
+app.use('/api/v1/auth',authRoutes)
+app.use('/api/v1/product',productRoutes)
+app.use('/api/v1/category',categoryRoutes)
+app.use('/api/v1/cart', cartRoutes)
+app.use('/api/v1/order', orderRoutes)
+app.use('/api/v1/review', reviewRoutes)
 
 
 

@@ -7,14 +7,15 @@ user:{
     ref:'User',
     required:true
 },
-products:{
+products:[
+{    product:{
     type:mongoose.Schema.Types.ObjectId,
     ref:"Product"
-},
+}}],
 
 
 }, { timestamps: true });
 
-const Wishtlist = mongoose.model("Wishlist", wishlistSchema);
+const Wishlist = mongoose.model("Wishlist", wishlistSchema);
 
-export default wishlistSchema;
+export default Wishlist;
