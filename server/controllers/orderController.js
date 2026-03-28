@@ -1,5 +1,6 @@
 import Order from "../models/Order.js";
 import Cart from "../models/Cart.js";
+import { sendOrderConfirmationEmail } from '../utils/sendEmail.js'
 
 export const createOrder = async (req, res) => {
   try {
@@ -28,9 +29,14 @@ export const createOrder = async (req, res) => {
       address,
     });
 
+
+
     cart.items = [];
     cart.totalPrice = 0;
     await cart.save();
+
+    const user = await User.findById(req.user.id)
+  await sendOrderConfirmationEmail(user.email, order)
 
     res.status(201).json({
       message: "order created",
